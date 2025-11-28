@@ -46,7 +46,7 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-// ✅ IMPORTANT: match Next's LayoutProps – allow `string` here
+// ✅ allow string locale (as Next sends)
 type RootLayoutProps = {
   children: ReactNode;
   params: Promise<{ locale: string }>;
@@ -55,17 +55,15 @@ type RootLayoutProps = {
 export default async function RootLayout({ children, params }: RootLayoutProps) {
   const { locale } = await params;
 
-  // runtime check: only allow our known locales
   if (!locales.includes(locale as Locale)) {
     notFound();
   }
 
   const safeLocale = locale as Locale;
-
   const messages = await getMessages({ locale: safeLocale });
 
   return (
-    <html lang={safeLocale}>
+    <html lang={safeLocale} className="scroll-smooth">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white relative`}
       >
@@ -78,14 +76,17 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
             maxSize={2}
             particleDensity={100}
             particleColor="#ffffff"
-            speed={6}
+            speed={1}
             className="h-full w-full"
           />
         </div>
 
         <NextIntlClientProvider locale={safeLocale} messages={messages}>
           <Navbar />
-          <div className="pt-20 relative z-10">{children}</div>
+          {/* main content – pushed below navbar, above sparkles */}
+          <div className="relative z-10 pt-20">
+            {children}
+          </div>
           <Footer />
         </NextIntlClientProvider>
       </body>

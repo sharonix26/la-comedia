@@ -6,5 +6,27 @@
    "contact": "Contact",
    "tickets": "Tickets",
    "findUs": "Find Us"
-   }
+   },
+   
+  "About": {
+    "eyebrow": "About La Comedia",
+    "title": "Where comedy meets cocktails in Valencia",
+    "tagline": "Premium cocktails, five draft beers, tapas at good prices and nights full of shows, karaoke and stand-up since 2025.",
+    "intro": "La Comedia is a cozy stand-up and nightlife bar on C. de Campoamor 59 in Valencia. We serve premium cocktails, five draft beers from the barrel, tapas at friendly prices and a calendar full of good times.",
+    "highlightsTitle": "What you’ll find here",
+    "highlight1": "Signature cocktails mixed with top-shelf spirits.",
+    "highlight2": "Five rotating beers on tap, always cold and fresh.",
+    "highlight3": "Tapas at good prices to share between laughs.",
+    "highlight4": "A warm local crowd, good music and a chilled atmosphere.",
+    "nightsTitle": "Nights you won’t forget",
+    "nightsText": "Every Friday and Saturday from 20:00 to 01:30 we host our famous karaoke nights: pay 5€ once and sing as many songs as you want. No pressure, just music, laughter and applause.",
+    "nightsList1": "Stand-up comedy nights with local and guest comedians.",
+    "nightsList2": "Open mics for new voices, experiments and first-time performers.",
+    "nightsList3": "Private parties, company events and birthdays you can fully customize.",
+    "nightsList4": "Special themed nights, brand activations and more surprises.",
+    "collabText": "If you are a comedian, musician, host, or you want to rent La Comedia for a private event, we’d love to hear from you.",
+    "cta": "Contact us about performing or booking",
+    "image1Alt": "Bartender serving a premium cocktail at La Comedia bar in Valencia",
+    "image2Alt": "People singing karaoke and laughing together at La Comedia"
+  }
 }

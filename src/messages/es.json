@@ -6,5 +6,27 @@
     "contact": "Contacto",
     "tickets": "Entradas",
     "findUs": "Cómo Llegar"
-   }
+   },
+
+  "About": {
+    "eyebrow": "Sobre La Comedia",
+    "title": "Donde la comedia se mezcla con los cócteles en Valencia",
+    "tagline": "Cócteles premium, cinco cervezas de barril, tapas a buen precio y noches llenas de espectáculos, karaoke y stand-up desde 2025.",
+    "intro": "La Comedia es un bar acogedor de comedia y noche en C. de Campoamor 59, Valencia. Servimos cócteles de autor, cinco cervezas de barril, tapas a buenos precios y una programación llena de buenos momentos.",
+    "highlightsTitle": "Qué encontrarás aquí",
+    "highlight1": "Cócteles de autor preparados con destilados de calidad.",
+    "highlight2": "Cinco cervezas diferentes de barril, siempre bien frías.",
+    "highlight3": "Tapas a buen precio para picar y compartir entre risas.",
+    "highlight4": "Ambiente cercano, gente de barrio y música con buen rollo.",
+    "nightsTitle": "Noches que no se olvidan",
+    "nightsText": "Cada viernes y sábado de 20:00 a 01:30 hacemos nuestro karaoke mítico: pagas 5€ una vez y puedes cantar todas las canciones que quieras. Sin presión, solo música, risas y aplausos.",
+    "nightsList1": "Noches de stand-up con cómicos locales e invitados.",
+    "nightsList2": "Micros abiertos para nuevas voces y primeras veces en el escenario.",
+    "nightsList3": "Eventos privados, fiestas de empresa y cumpleaños a medida.",
+    "nightsList4": "Noches temáticas especiales, activaciones de marca y más sorpresas.",
+    "collabText": "Si eres cómico, músico, presentador o quieres alquilar La Comedia para un evento privado, nos encantará escucharte.",
+    "cta": "Contacta para actuar o reservar el local",
+    "image1Alt": "Camarero sirviendo un cóctel premium en La Comedia en Valencia",
+    "image2Alt": "Gente cantando karaoke y riendo juntos en La Comedia"
+  }
 }

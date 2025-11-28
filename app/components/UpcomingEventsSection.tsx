@@ -4,16 +4,14 @@ import { useState } from "react";
 import Image from "next/image";
 import { ArrowUpRight, X } from "lucide-react";
 
-// ---- BACKLOG DATA MODEL (easy to swap to CMS/API later) ----
-
 type EventItem = {
   id: string;
   title: string;
-  date: string;        // "Thu • 21:30"
-  tag?: string;        // "Stand-up", "Karaoke", etc.
-  imageSrc: string;    // poster path in /public/events
+  date: string;
+  tag?: string;
+  imageSrc: string;
   imageAlt: string;
-  ticketsUrl: string;  // external URL
+  ticketsUrl: string;
   description?: string;
   lineup?: string;
 };
@@ -51,8 +49,7 @@ const UPCOMING_EVENTS: EventItem[] = [
     imageSrc: "/events/spanish-comedy.jpg",
     imageAlt: "Spanish comedian performing on stage",
     ticketsUrl: "https://tickets.example.com/spanish-comedy",
-    description:
-      "Top local comics dropping fresh material en español.",
+    description: "Top local comics dropping fresh material en español.",
     lineup: "4–5 comedians • 10–15 min sets • Hosted night.",
   },
   {
@@ -117,35 +114,24 @@ const UPCOMING_EVENTS: EventItem[] = [
   },
 ];
 
-// ---- COMPONENT ----
-
 export default function UpcomingEventsSection() {
   const [activeEvent, setActiveEvent] = useState<EventItem | null>(null);
 
   return (
     <section
       id="events"
-      className="relative mx-auto max-w-6xl px-6 py-16 md:py-24 scroll-mt-24 min-h-[600px] z-10"
+      className="relative mx-auto max-w-6xl px-6 py-10 md:py-12 scroll-mt-24 z-10"
     >
-      {/* Background crowd image */}
-      <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden rounded-3xl md:rounded-[2rem]">
-        <Image
-          src="/bg/crowd.jpg" // put a crowd image in /public/bg/crowd.jpg
-          alt="Crowd clapping at La Comedia"
-          fill
-          className="object-cover opacity-30"
-        />
-      </div>
-
-      {/* Background crowd image + dark overlay */}
+      {/* Background crowd image – lighter / more transparent */}
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden rounded-3xl md:rounded-[2rem]">
         <Image
-          src="/bg/crowd.jpg" // put a crowd image in /public/bg/crowd.jpg
+          src="/bg/crowd.jpg"
           alt="Crowd clapping at La Comedia"
           fill
-          className="object-cover opacity-30"
+          className="object-cover opacity-20"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/85 to-black" />
+        {/* subtle dark veil so text is still readable */}
+        <div className="absolute inset-0 bg-black/30" />
       </div>
 
       {/* Section header */}
@@ -165,20 +151,12 @@ export default function UpcomingEventsSection() {
       </div>
 
       {/* 4 × 2 grid gallery */}
-      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {UPCOMING_EVENTS.map((event) => (
           <article
             key={event.id}
             onClick={() => setActiveEvent(event)}
-            className="
-              group flex cursor-pointer flex-col overflow-hidden
-              rounded-xl border border-white/10 bg-black/40
-              shadow-[0_0_20px_rgba(0,0,0,0.6)] backdrop-blur-sm
-              transition-all duration-200
-              hover:-translate-y-1
-              hover:border-[#ff1e1e]
-              hover:shadow-[0_0_28px_rgba(255,30,30,0.7)]
-            "
+            className="group flex cursor-pointer flex-col overflow-hidden rounded-xl border border-white/10 bg-black/30 shadow-[0_0_20px_rgba(0,0,0,0.6)] backdrop-blur-sm transition-all duration-200 hover:-translate-y-1 hover:border-[#ff1e1e] hover:shadow-[0_0_28px_rgba(255,30,30,0.7)]"
           >
             {/* Poster */}
             <div className="relative h-40 w-full overflow-hidden">
@@ -241,11 +219,7 @@ export default function UpcomingEventsSection() {
           onClick={() => setActiveEvent(null)}
         >
           <div
-            className="
-              relative w-full max-w-lg overflow-hidden
-              rounded-2xl border border-white/20 bg-black/90
-              shadow-[0_0_40px_rgba(0,0,0,0.9)] backdrop-blur-xl
-            "
+            className="relative w-full max-w-lg overflow-hidden rounded-2xl border border-white/20 bg-black/90 shadow-[0_0_40px_rgba(0,0,0,0.9)] backdrop-blur-xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close button */}
@@ -298,13 +272,7 @@ export default function UpcomingEventsSection() {
                     href={activeEvent.ticketsUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="
-                      inline-flex items-center gap-1 rounded-full
-                      bg-gradient-to-r from-[#ff1e1e] to-[#b80000]
-                      px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em]
-                      text-white shadow-[0_0_24px_rgba(255,30,30,0.7)]
-                      transition-transform hover:scale-[1.04]
-                    "
+                    className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-[#ff1e1e] to-[#b80000] px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-white shadow-[0_0_24px_rgba(255,30,30,0.7)] transition-transform hover:scale-[1.04]"
                   >
                     Buy tickets
                     <ArrowUpRight className="h-3 w-3" />

@@ -62,13 +62,13 @@ export default function Navbar() {
       >
         {/* LEFT: nav links (desktop) */}
         <div className="hidden md:flex items-center gap-8">
-          <Link href={`${base}/events`} className="nav-link">
+          <Link href={`${base}#events`} className="nav-link">
             {t("events")}
           </Link>
           <Link href={`${base}/performers`} className="nav-link">
             {t("performers")}
           </Link>
-          <Link href={`${base}/about`} className="nav-link">
+          <Link href={`${base}#about`} className="nav-link">
             {t("about")}
           </Link>
           <Link href={`${base}/contact`} className="nav-link">
@@ -149,7 +149,7 @@ export default function Navbar() {
           >
             <div className="flex flex-col items-center gap-5 py-5 text-lg">
               <Link
-                href={`${base}/events`}
+                href={`${base}#events`}
                 onClick={() => setOpen(false)}
                 className="nav-link"
               >
@@ -163,7 +163,7 @@ export default function Navbar() {
                 {t("performers")}
               </Link>
               <Link
-                href={`${base}/about`}
+                href={`${base}#about`}
                 onClick={() => setOpen(false)}
                 className="nav-link"
               >

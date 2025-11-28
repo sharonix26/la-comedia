@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import { useTranslations } from "next-intl";
 import { useParams, usePathname, useRouter } from "next/navigation";
+import { MapPin } from "lucide-react";
 
 type Locale = "en" | "es" | "ru" | "ua";
 const LOCALES: Locale[] = ["en", "es", "ru", "ua"];
@@ -15,10 +16,8 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // 🔹 translations from src/messages/{locale}.json -> "Navbar" section
   const t = useTranslations("Navbar");
 
-  // 🔹 get current locale and path from URL: /en/events, /es/about etc.
   const params = useParams<{ locale: Locale }>();
   const pathname = usePathname();
   const router = useRouter();
@@ -77,14 +76,34 @@ export default function Navbar() {
           </Link>
         </div>
 
+        {/* CENTER: floating logo (clickable, goes to home) */}
+        <div className="pointer-events-auto absolute left-1/2 top-16.5 -translate-x-1/2 -translate-y-1/2 md:block z-40">
+          <div className="relative">
+            <Link href={base} className="inline-flex items-center">
+              <Image
+                src="/lacomedialogo.png"
+                alt="Comedy Bar Logo"
+                width={160}
+                height={160}
+                priority
+                className="drop-shadow-[0_0_12px_rgba(255,0,60,0.55)]"
+              />
+            </Link>
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-[61px]" />
+          </div>
+        </div>
+
         {/* RIGHT: language + CTA (desktop) */}
         <div className="hidden md:flex items-center gap-4">
           <LanguageMenu currentLocale={locale} onChange={changeLocale} />
           <Link
-            href={`${base}/tickets`}
-            className="rounded-md bg-[#ff003c] px-4 py-2 text-white font-semibold shadow-[0_0_12px_rgba(255,0,60,0.6)] hover:shadow-[0_0_20px_rgba(255,0,60,0.8)] transition"
+            href={`${base}#location`}
+            className="inline-flex items-center gap-2 rounded-md bg-[#ff003c] px-5 py-2.5 text-white font-semibold
+                       shadow-[0_0_12px_rgba(255,0,60,0.7)] hover:shadow-[0_0_20px_rgba(255,0,60,0.9)]
+                       hover:bg-[#ff174f] transition-all"
           >
-            {t("tickets")}
+            <MapPin className="h-4 w-4" />
+            {t("findUs")}
           </Link>
         </div>
 
@@ -112,21 +131,6 @@ export default function Navbar() {
             />
           </div>
         </button>
-
-        {/* CENTER: floating logo overlapping bottom */}
-        <div className="pointer-events-auto absolute left-1/2 top-16.5 -translate-x-1/2 -translate-y-1/2 md:block z-40">
-          <div className="relative">
-            <Image
-              src="/lacomedialogo.png"
-              alt="Comedy Bar Logo"
-              width={160}
-              height={160}
-              priority
-              className="drop-shadow-[0_0_12px_rgba(255,0,60,0.55)]"
-            />
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-[61px]" />
-          </div>
-        </div>
 
         {/* downward glow – behind logo */}
         <div className="pointer-events-none absolute left-0 top-full h-10 w-full bg-gradient-to-b from-[#ff003c]/30 via-transparent to-transparent blur-sm z-10" />
@@ -189,11 +193,14 @@ export default function Navbar() {
               </div>
 
               <Link
-                href={`${base}/tickets`}
+                href={`${base}#location`}
                 onClick={() => setOpen(false)}
-                className="rounded-md bg-[#ff003c] px-4 py-2 text-white font-semibold shadow-[0_0_12px_rgba(255,0,60,0.6)] hover:shadow-[0_0_20px_rgba(255,0,60,0.8)] transition"
+                className="inline-flex items-center gap-2 rounded-md bg-[#ff003c] px-5 py-2.5 text-white font-semibold
+                           shadow-[0_0_12px_rgba(255,0,60,0.7)] hover:shadow-[0_0_20px_rgba(255,0,60,0.9)]
+                           hover:bg-[#ff174f] transition-all"
               >
-                {t("tickets")}
+                <MapPin className="h-4 w-4" />
+                {t("findUs")}
               </Link>
             </div>
           </motion.div>
@@ -242,8 +249,7 @@ function LanguageMenu({
 }) {
   const [open, setOpen] = useState(false);
 
-  const label =
-    currentLocale.toUpperCase(); // "EN", "ES", "RU", "UA"
+  const label = currentLocale.toUpperCase();
 
   return (
     <div className="relative">
@@ -281,7 +287,7 @@ function LanguageMenu({
                     onChange(code);
                     setOpen(false);
                   }}
-                  className={`w-full px-3 py-2 text-left text-white/85 hover:bg.white/5 hover:text-white ${
+                  className={`w-full px-3 py-2 text-left text-white/85 hover:bg-white/5 hover:text-white ${
                     code === currentLocale ? "bg-white/10" : ""
                   }`}
                   role="menuitem"

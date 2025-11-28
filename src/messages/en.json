@@ -1,9 +1,10 @@
 {
-  "Navbar": {
-    "events": "Events",
-    "performers": "Performers",
-    "about": "About",
-    "contact": "Contact",
-    "tickets": "Buy Tickets"
-  }
+   "Navbar": {
+   "events": "Events",
+   "performers": "Performers",
+   "about": "About",
+   "contact": "Contact",
+   "tickets": "Tickets",
+   "findUs": "Find Us"
+   }
 }

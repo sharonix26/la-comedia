@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import Navbar from "../components/Navbar";
@@ -45,25 +46,26 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
+// ✅ IMPORTANT: match Next's LayoutProps – allow `string` here
 type RootLayoutProps = {
-  children: React.ReactNode;
-  // ⬇ IMPORTANT: params is a Promise in Next 16
-  params: Promise<{ locale: Locale }>;
+  children: ReactNode;
+  params: Promise<{ locale: string }>;
 };
 
 export default async function RootLayout({ children, params }: RootLayoutProps) {
-  // ⬇ unwrap params
   const { locale } = await params;
 
-  if (!locales.includes(locale)) {
+  // runtime check: only allow our known locales
+  if (!locales.includes(locale as Locale)) {
     notFound();
   }
 
-  // Use next-intl's server functions to get messages
-  const messages = await getMessages();
+  const safeLocale = locale as Locale;
+
+  const messages = await getMessages({ locale: safeLocale });
 
   return (
-    <html lang={locale}>
+    <html lang={safeLocale}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white relative`}
       >
@@ -81,7 +83,7 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
           />
         </div>
 
-        <NextIntlClientProvider locale={locale} messages={messages}>
+        <NextIntlClientProvider locale={safeLocale} messages={messages}>
           <Navbar />
           <div className="pt-20 relative z-10">{children}</div>
           <Footer />

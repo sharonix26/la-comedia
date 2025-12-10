@@ -28,5 +28,21 @@
     "cta": "Звʼязатися щодо виступу або оренди",
     "image1Alt": "Бармен подає преміальний коктейль у барі La Comedia у Валенсії",
     "image2Alt": "Люди співають караоке й сміються разом у La Comedia"
+  },
+
+  "HeroCarousel": {
+    "tagline": "СТЕНДАП • ВІДКРИТИЙ МІКРОФОН • СПЕЦШОУ",
+    "cta": "Найближчі шоу"
+  },
+
+  "MapSection": {
+    "title": "Як дістатися",
+    "description": "La Comedia stand up bar розташований в районі Альхірос, за кілька кроків від університетів та авенід Бласко Ібаньєса.",
+    "addressLabel": "Адреса",
+    "addressName": "La Comedia stand up bar",
+    "addressStreet": "C de Campoamor, 59",
+    "addressCity": "Algirós, 46022 València, Valencia",
+    "openInMaps": "Відкрити в Google Maps",
+    "iframeTitle": "La Comedia stand up bar — карта"
   }
 }

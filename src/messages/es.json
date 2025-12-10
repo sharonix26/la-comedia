@@ -28,5 +28,22 @@
     "cta": "Contacta para actuar o reservar el local",
     "image1Alt": "Camarero sirviendo un cóctel premium en La Comedia en Valencia",
     "image2Alt": "Gente cantando karaoke y riendo juntos en La Comedia"
+  },
+
+  "HeroCarousel": {
+    "tagline": "MONOLOGOS • OPEN MIC • ESPECIALES",
+    "cta": "Ver próximos shows"
+  },
+
+  "MapSection": {
+    "title": "Cómo llegar",
+    "description": "La Comedia stand up bar está en Algirós, a dos pasos de las universidades y de las avenidas de Blasco Ibáñez.",
+    "addressLabel": "Dirección",
+    "addressName": "La Comedia stand up bar",
+    "addressStreet": "C de Campoamor, 59",
+    "addressCity": "Algirós, 46022 València, Valencia",
+    "openInMaps": "Abrir en Google Maps",
+    "iframeTitle": "La Comedia stand up bar - mapa"
   }
 }
+

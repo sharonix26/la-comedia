@@ -1,7 +1,7 @@
 import AboutSection from "../components/AboutSection";
 import HeroCarousel from "../components/HeroCarousel";
 import UpcomingEventsSection from "../components/UpcomingEventsSection";
-import MapSection from "../components/mapsection";
+import MapSection from "../components/MapSection";
 
 export default function HomePage() {
   return (

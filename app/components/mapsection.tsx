@@ -1,6 +1,10 @@
-// app/components/MapSection.tsx
+"use client";
+
+import { useTranslations } from "next-intl";
 
 export default function MapSection() {
+  const t = useTranslations("MapSection");
+
   return (
     <section
       id="location"
@@ -11,21 +15,20 @@ export default function MapSection() {
           {/* Left: text / address */}
           <div>
             <h2 className="text-2xl md:text-3xl font-semibold">
-              Cómo llegar
+              {t("title")}
             </h2>
             <p className="mt-3 text-white/70">
-              La Comedia stand up bar está en Algirós, a dos pasos de las
-              universidades y del Avenidas de Blasco Ibáñez.
+              {t("description")}
             </p>
 
             <div className="mt-5 space-y-2 text-sm md:text-base">
-              <p className="font-medium">Dirección</p>
+              <p className="font-medium">{t("addressLabel")}</p>
               <p className="text-white/80">
-                La Comedia stand up bar
+                {t("addressName")}
                 <br />
-                C de Campoamor, 59
+                {t("addressStreet")}
                 <br />
-                Algirós, 46022 València, Valencia
+                {t("addressCity")}
               </p>
             </div>
 
@@ -35,14 +38,14 @@ export default function MapSection() {
               rel="noreferrer"
               className="inline-flex mt-6 items-center gap-2 rounded-full border border-white/30 px-4 py-2 text-sm font-medium hover:border-white hover:bg-white/5 transition"
             >
-              Abrir en Google Maps
+              {t("openInMaps")}
             </a>
           </div>
 
           {/* Right: embedded map */}
           <div className="h-72 md:h-80 w-full overflow-hidden rounded-xl border border-white/10 shadow-lg bg-black/20">
             <iframe
-              title="La Comedia stand up bar - mapa"
+              title={t("iframeTitle")}
               src="https://www.google.com/maps?q=La+Comedia+stand+up+bar,+C+de+Campoamor,+59,+Algir%C3%B3s,+46022+Val%C3%A8ncia,+Valencia&output=embed"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

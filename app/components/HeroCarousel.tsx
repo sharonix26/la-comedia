@@ -5,19 +5,33 @@ import { Autoplay, Pagination } from "swiper/modules";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
 
 import "swiper/css";
 import "swiper/css/pagination";
+
+// 🔹 same Locale type we used in Navbar
+type Locale = "en" | "es" | "ru" | "ua";
 
 const SLIDES = [
   { src: "/hero/img1.jpg", alt: "Stand-up on stage" },
   { src: "/hero/img2.jpg", alt: "Audience laughing" },
   { src: "/hero/img3.jpg", alt: "Vintage microphone" },
   { src: "/hero/img4.jpg", alt: "Red velvet curtains" },
-  { src: "/hero/img5.jpg", alt: "Crowd at tables" },
+  { src: "/hero/img5.jpg", alt: "Crowd at tables" }
 ];
 
 export default function HeroCarousel() {
+  // 🔹 translations from "HeroCarousel" namespace in JSON
+  const t = useTranslations("HeroCarousel");
+
+  // 🔹 get current locale from URL: /en, /es, /ru, /ua
+  const params = useParams<{ locale: Locale }>();
+  const locale: Locale = (params?.locale ?? "en") as Locale;
+
+  const performersHref = `/${locale}/performers`;
+
   return (
     <section
       className="relative w-full overflow-hidden bg-black/90 backdrop-blur-sm z-10"
@@ -30,7 +44,7 @@ export default function HeroCarousel() {
         autoplay={{
           delay: 3000,
           disableOnInteraction: false,
-          pauseOnMouseEnter: true,
+          pauseOnMouseEnter: true
         }}
         pagination={{ clickable: true }}
         slidesPerView={1}
@@ -58,7 +72,7 @@ export default function HeroCarousel() {
       {/* Tagline – centered above the button */}
       <div className="pointer-events-none absolute inset-0 z-20 flex items-end justify-center pb-20 sm:pb-24">
         <p className="px-4 text-center text-sm sm:text-lg md:text-xl font-semibold tracking-[0.25em] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-          STAND-UP • KARAOKE • GOOD TIMES
+          {t("tagline")}
         </p>
       </div>
 
@@ -85,10 +99,10 @@ export default function HeroCarousel() {
           transition={{
             duration: 2.4,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: "easeInOut"
           }}
         >
-          See upcoming shows
+          {t("cta")}
           <ArrowDown className="h-4 w-4" />
         </motion.a>
       </div>
